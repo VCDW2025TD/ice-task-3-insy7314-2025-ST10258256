@@ -18,7 +18,8 @@ export default function Login() {
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err) {
-      setError("Invalid credentials");
+      console.error("Login error:", err.response || err);
+      setError(err.response?.data?.message || "Login failed. Try again.");
     }
   };
 
